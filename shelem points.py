@@ -24,7 +24,7 @@ def goal_point():
             if points % 5:
                 print('Goal of the game should be multiples of 5!')
             elif points < 330:
-                print('It is too low for the Goal of the game!')
+                print('It is too low for the Goal of the game! (min is 330)')
             else:
                 break
         except ValueError:
@@ -56,8 +56,11 @@ def declarer_bid():
     return declarer, bid
 
 
+print('let\'s start the game!')
+n = 1
 while True:
     if team2_points < goal and team1_points < goal:
+        print(f'game {n}')
         hakem, hokm = declarer_bid()
         while True:
             try:
@@ -89,6 +92,7 @@ while True:
             team1_points += point[1]
         print(f'''Team 1 {team1[:2]} points = {team1_points}
 Team 2 {team2[:2]} points = {team2_points}''')
+        n += 1
     else:
         print('WIN')
         break
