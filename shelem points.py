@@ -1,5 +1,6 @@
 def names():
-    print('''Team 1: player no. 1 & player no. 2
+    print('''Please enter the names of the players as follows:
+Team 1: player no. 1 & player no. 2
 Team 2: player no. 3 & player no. 4''')
     player_names = [input(f'player no. {i + 1}: ') for i in range(4)]
     return player_names
@@ -20,20 +21,20 @@ def goal_point():
     print("Goal of the game")
     while True:
         try:
-            points = int(input('How many points? (1200 is recommended)\n>>> '))
+            points = int(input('please enter maximum game points? (1200 is recommended)\n>>> '))
             if points % 5:
-                print('Goal of the game should be multiples of 5!')
+                print('It should be multiples of 5!')
             elif points < 330:
-                print('It is too low for the Goal of the game! (min is 330)')
+                print('It is too low for the Goal of the game! (330 at least)')
             else:
                 break
         except ValueError:
-            print('Goal of the game should be a number!')
+            print('It should be a number!')
     return points
 
 
 goal = goal_point()
-print(f'First team reach {goal} is the winner.')
+print(f'The first team to reach {goal} wins.')
 
 
 def declarer_bid():
@@ -66,11 +67,11 @@ while True:
             try:
                 hammal_point = int(input('The other team (not declarer) points: '))
                 if hammal_point % 5 or hammal_point < 0 or hammal_point > 165:
-                    print('this is not acceptable')
+                    print('this score is not acceptable')
                 else:
                     break
             except ValueError:
-                print('point should be a number!')
+                print('It should be a number!')
         point = [0, 0]
         point[1] = hammal_point
         if hammal_point == 0:
@@ -90,8 +91,8 @@ while True:
         elif hakem.lower() in team2:
             team2_points += point[0]
             team1_points += point[1]
-        print(f'''Team 1 {team1[:2]} points = {team1_points}
-Team 2 {team2[:2]} points = {team2_points}''')
+        print(f'''Team 1 {team1[:2]} score = {team1_points}
+Team 2 {team2[:2]} score = {team2_points}''')
         n += 1
     else:
         print('WIN')
