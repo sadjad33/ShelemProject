@@ -38,7 +38,7 @@ print(f'The first team to reach {goal} wins.')
 def declarer_bid():
     while True:
         declarer = input('Who is declarer? (please type declarer name or his/her team number)\n>>> ')
-        if declarer in team2 or declarer in team1:
+        if declarer.lower() in team2 or declarer.lower() in team1:
             break
         else:
             print(f'I don\'t know "{declarer}"!')
@@ -52,7 +52,7 @@ def declarer_bid():
                 break
         except ValueError:
             print('bid should be a number!')
-    return declarer, bid
+    return declarer.lower(), bid
 
 
 def game():
@@ -83,15 +83,19 @@ def game():
             elif hammal_point >= 85:
                 hakem_point = -2 * hokm
 
-            if hakem.lower() in team1:
+            if hakem in team1:
                 team1_points += hakem_point
                 team2_points += hammal_point
-            elif hakem.lower() in team2:
+            elif hakem in team2:
                 team2_points += hakem_point
                 team1_points += hammal_point
             print(f'''Team 1 {team1[:2]} score = {team1_points}
-    Team 2 {team2[:2]} score = {team2_points}''')
+Team 2 {team2[:2]} score = {team2_points}''')
             n += 1
         else:
-            print('Win')
+            winner = team1 if team1_points > team2_points else team2
+            print(f'{winner[0]} & {winner[1]} won the game!')
             break
+
+
+game()
